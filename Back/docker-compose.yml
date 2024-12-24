@@ -1,0 +1,19 @@
+version: '3'
+services:
+  express-api:
+    build: .
+    ports: 
+      ['8080:8080']
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL:"postgresql://postgres:1945@db:5432/mydatabase?authSource=admin&directConnection=true"
+  db:
+    image: postgres
+    container_name: project-data
+    ports: 
+      ['5432:5432']
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1945
+      POSTGRES_DB: mydatabase
