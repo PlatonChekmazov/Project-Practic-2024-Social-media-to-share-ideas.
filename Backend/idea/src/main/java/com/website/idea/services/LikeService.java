@@ -1,0 +1,34 @@
+package com.website.idea.services;
+
+import com.website.idea.models.Likes.Like;
+import com.website.idea.repositories.LikeRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class LikeService {
+
+    @Autowired
+    private LikeRepository likeRepository;
+
+    public List<Like> getAllLikes() {
+        return likeRepository.findAll();
+    }
+
+    public Optional<Like> getLikeById(Long id) {
+        return likeRepository.findById(id);
+    }
+
+    public Like createLike(Like like) {
+        return likeRepository.save(like);
+    }
+
+    public void deleteLike(Long id) {
+        Like like = likeRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Лайки не найдены с id: " + id));
+        likeRepository.delete(like);
+    }
+}
