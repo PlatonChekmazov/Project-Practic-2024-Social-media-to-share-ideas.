@@ -1,5 +1,0 @@
-com\website\idea\IdeaApplication.class
-com\website\idea\model\User.class
-com\website\idea\repository\UserRepository.class
-com\website\idea\service\UserService.class
-com\website\idea\controller\AuthController.class
